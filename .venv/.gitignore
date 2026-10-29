@@ -1,6 +1,0 @@
-.venv/
-__pycache__/
-*.pyc
-todos.db
-tasks.db
-.idea/git rm -r --cached .
