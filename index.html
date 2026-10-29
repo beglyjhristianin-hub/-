@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой Планер Задач</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      /* Палитра сгущенки и мягкого зеленого */
+      --bg-cream: #F8F3E6;
+      --condensed-milk: #FFFBF0;
+      --condensed-milk-dark: #F3E7CA;
+      --condensed-border: #443527;
+
+      --green-soft: #4A6E4E;
+      --green-hover: #3B5B3E;
+      --green-light: #E4EDE1;
+
+      --text-main: #382C22;
+      --text-muted: #8F8073;
+      --danger: #BD4B37;
+      --danger-bg: #FBECE8;
+
+      --border: 3px solid var(--condensed-border);
+      --shadow: 5px 5px 0px var(--condensed-border);
+      --shadow-sm: 3px 3px 0px var(--condensed-border);
+      --radius: 20px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(74, 110, 78, 0.08) 0%, transparent 35%),
+        radial-gradient(circle at 85% 85%, rgba(243, 231, 202, 0.6) 0%, transparent 40%),
+        radial-gradient(#D6C4AE 1.5px, transparent 1.5px);
+      background-size: 100% 100%, 100% 100%, 22px 22px;
+      color: var(--text-main);
+      font-family: 'Nunito', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 48px 16px;
+    }
+
+    /* Главная карточка */
+    .planner-card {
+      width: 100%;
+      max-width: 540px;
+      background: var(--condensed-milk);
+      border: var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 34px 28px;
+      position: relative;
+    }
+
+    /* Декоративная скрепка-закладка */
+    .planner-card::before {
+      content: "";
+      position: absolute;
+      top: -14px;
+      left: 36px;
+      width: 76px;
+      height: 24px;
+      background: var(--green-light);
+      border: var(--border);
+      border-radius: 8px;
+      box-shadow: 2px 2px 0px var(--condensed-border);
+    }
+
+    header {
+      margin-bottom: 24px;
+    }
+
+    .title-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    h1 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .counter-badge {
+      background: var(--green-soft);
+      color: #FFF;
+      font-weight: 800;
+      font-size: 14px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      border: 2px solid var(--condensed-border);
+      box-shadow: 2px 2px 0px var(--condensed-border);
+    }
+
+    .subtitle {
+      color: var(--text-muted);
+      font-size: 14px;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    /* Виджет прогресса */
+    .progress-box {
+      background: var(--condensed-milk-dark);
+      border: var(--border);
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .progress-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .progress-track {
+      background: #FFF;
+      border: 2px solid var(--condensed-border);
+      height: 14px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      background: repeating-linear-gradient(
+        45deg,
+        var(--green-soft),
+        var(--green-soft) 10px,
+        #3B5B3E 10px,
+        #3B5B3E 20px
+      );
+      height: 100%;
+      width: 0%;
+      border-radius: 10px;
+      transition: width 0.35s ease;
+    }
+
+    /* Форма ввода */
+    .task-form {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .task-input {
+      flex: 1;
+      padding: 14px 18px;
+      background: #FFF;
+      border: var(--border);
+      border-radius: 14px;
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--text-main);
+      box-shadow: var(--shadow-sm);
+      outline: none;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .task-input:focus {
+      transform: translateY(-2px);
+      box-shadow: 4px 4px

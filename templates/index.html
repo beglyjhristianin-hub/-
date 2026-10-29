@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Tasks — To-Do List</title>
+
+    <link rel="stylesheet" href="/style.css">
+    <script src="/script.js" defer></script>
+</head>
+<body>
+    <main class="app">
+        <header class="header">
+            <div class="logo">✓</div>
+            <div>
+                <h1>My Tasks</h1>
+                <p>Твой день под контролем</p>
+            </div>
+        </header>
+
+        <section class="stats">
+            <div class="stat-card">
+                <span>Всего задач</span>
+                <strong id="total-count">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span>Выполнено</span>
+                <strong id="done-count">0</strong>
+            </div>
+        </section>
+
+        <form id="task-form" class="task-form">
+            <input
+                id="task-input"
+                type="text"
+                placeholder="Что нужно сделать?"
+                maxlength="200"
+                autocomplete="off"
+                required
+            >
+            <button type="submit">+ Добавить</button>
+        </form>
+
+        <section class="tasks-section">
+            <div class="section-heading">
+                <h2>Мои задачи</h2>
+                <span id="progress-label">0% выполнено</span>
+            </div>
+
+            <div class="progress-track">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+
+            <div id="task-list" class="task-list"></div>
+
+            <p id="empty-message" class="empty-message">
+                добавить задачу
+            </p>
+
+            <p id="error-message" class="error-message"></p>
+        </section>
+
+        <footer class="footer">
+            <span>стоит только начат</span>
+        </footer>
+    </main>
+</body>
+</html>
